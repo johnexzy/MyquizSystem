@@ -17,13 +17,13 @@
 }
 
 .container-mains {
-    width: 550px;
-    margin: 0 auto;
+    max-width: 550px;
+    margin: 20px auto;
     border: 1px solid;
     border-radius: 10px;
     padding: 9px;
-    background: #000001;
-    color: #fff;
+    background: #ffffff;
+    color: #000;
 }
 
 .image {

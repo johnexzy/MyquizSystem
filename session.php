@@ -4,7 +4,8 @@ session_start();
 include_once 'sql/dbconnect.php';
 
 if (!isset($_SESSION['userSession'])) {
-	header("Location: index.php");
+	echo "Your SESSION HAS EXPIRED";
+	exit;
 }
 	$query = $DBcon->query("SELECT * FROM contestants WHERE constNumber =".$_SESSION['userSession']);
 	$conRow=$query->fetch_row();

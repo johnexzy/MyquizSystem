@@ -19,7 +19,7 @@ const checkPerm = () => {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == 0) {
                 document.write("Loading------")
-            } else window.location = 'http://localhost/MyQuiz/online.php';
+            } else window.location = 'online.php';
         }
     }
     var updateString = "?table=_checkmode1";
