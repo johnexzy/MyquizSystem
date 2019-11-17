@@ -19,7 +19,8 @@
                        `id` INT(11) NOT NULL AUTO_INCREMENT , 
                        `question_id` INT(255) NOT NULL , 
                        `answer` VARCHAR(255) NULL , 
-                       `correctAnswer` VARCHAR(255) NULL , 
+                       `correctAnswer` VARCHAR(255) NULL ,
+                       `grade` BOOLEAN NULL, 
                        PRIMARY KEY (`id`)) ENGINE = InnoDB;"
                 );
                 if(!$Create->execute()) $msg = 'User cant write this test. Contact Web Admin';

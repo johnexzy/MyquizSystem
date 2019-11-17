@@ -12,7 +12,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name='veiwport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
         <title></title>
         <link rel="stylesheet" type="text/css" href="Admin/assets/css/style.css">
         <style>

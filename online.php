@@ -2,34 +2,40 @@
 include 'session.php';
 echo $conRow[1]; //array indexed by number
 require 'sql/config.php';
-$query = "SELECT * FROM `questionround2` \n" . " ORDER BY `id` DESC";
-$stmt = $DBcon->prepare( $query );
-$disp = "<form method='POST' action='logic/logic.inc.php'>";
-if($stmt->execute()){
-    $nums=1;
-    while($row=$stmt->fetch(PDO::FETCH_BOTH)){
+$sql  = "TRUNCATE TABLE `john1`";
+$empty = $DBcon->prepare($sql);
+if ($empty->execute()) {
+    $query = "SELECT * FROM `questionround2` \n" . " ORDER BY `id` DESC";
+    $stmt = $DBcon->prepare( $query );
+    $disp = "<form method='POST' action='logic/logic.inc.php'>";
+    if($stmt->execute()){
+        $nums=1;
+        while($row=$stmt->fetch(PDO::FETCH_BOTH)){
+            $disp .= "
+                        <div class='container-mains'>
+                            <input type='hidden' id='question_id' value='$row[0]'>
+                            <p>Question <b>$nums</b></p>
+                            <hr>
+                            <p>Question: $row[2]</p>
+                            <hr>
+                            <p>A: <input type='radio' name='$conRow[1]$row[0]' value='$row[3]'>$row[3]</p>
+                            <p>B: <input type='radio' name='$conRow[1]$row[0]' value='$row[4]'>$row[4]</p>
+                            <p>C: <input type='radio' name='$conRow[1]$row[0]' value='$row[5]'>$row[5]</p>
+                            <p>D: <input type='radio' name='$conRow[1]$row[0]' value='$row[6]'>$row[6]</p>
+                            
+                        </div>
+                    ";
+            $nums += 1;
+        }
         $disp .= "
-                    <div class='container-mains'>
-                        <input type='hidden' id='question_id' value='$row[0]'>
-                        <p>Question <b>$nums</b></p>
-                        <hr>
-                        <p>Question: $row[2]</p>
-                        <p>A: <input type='radio' name='$conRow[1]$row[0]' value='$row[3]'>$row[3]</p>
-                        <p>B: <input type='radio' name='$conRow[1]$row[0]' value='$row[4]'>$row[4]</p>
-                        <p>C: <input type='radio' name='$conRow[1]$row[0]' value='$row[5]'>$row[5]</p>
-                        <p>D: <input type='radio' name='$conRow[1]$row[0]' value='$row[6]'>$row[6]</p>
-                        
+                    <div style=''>
+                        <button id='submit' type='submit' name='submitAnswer' >SUBMIT</button>
                     </div>
-                ";
-        $nums += 1;
+                  ";
+        $disp .= "</form>";
     }
-    $disp .= "
-                <div style=''>
-                    <button type='submit' name='submitAnswer' >SUBMIT</button>
-                </div>
-              ";
-    $disp .= "</form>";
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -44,13 +50,43 @@ if($stmt->execute()){
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="Admin/assets/css/profile.css">
+        <link rel="stylesheet" href="Admin/assets/bootstrap/css/bootstrap.css">
+        <style>
+        .body{
+            padding: 10px
+        }
+        .fixedtop{
+            cursor: pointer;
+            float: right;	
+            width: 100%; 
+            position: fixed;
+            top: 0;
+            background: #fff;
+            z-index: 1000;
+            height: 50px;
+            text-align: center;
+            box-shadow: 5px 0 5px 4px #444;
+        }
+        .logo{
+            margin-top:4px
+        }
+        </style>
     </head>
     <body>
+        <div class="fixedtop">
+            <p style="font-size: 23px; font-weight:bold" id="timerView"></p>
+		</div>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <input type="radio" name="option" id=""><label for="option"></label>
-        <?php echo $disp; ?>
-        <script src="" async defer></script>
+        <div class="fixed">
+        cdcnklnkl
+        </div>
+        <div class="body">
+           <?php echo $disp; ?> 
+        </div>
+        
+        <script src="Admin/assets/js/jquery-1.9.0.min.js"></script>
+        <script src="Admin/assets/js/timer.js" async defer></script>
     </body>
 </html>

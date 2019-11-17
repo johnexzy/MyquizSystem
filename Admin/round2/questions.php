@@ -12,8 +12,8 @@ if (isset($_POST['addquest'])) {
       $sql = "INSERT INTO `questionround2` (`question`, `optionA`, `optionB`, `optionC`, `optionD`, `CorrectAns`) VALUES ('$body', '$OptionA',  '$OptionB', '$OptionC', '$OptionD', '$CorrectAns')";
 
             if ($DBcon->query($sql) === true) {
-               $mssg = "<div class='alert alert-success'>
-        <span class='pe-7s-info'></span> &nbsp; Question added !
+               $mssg = "<div style='background: green;'>
+        <span class='pe-7s-info'></span> &nbsp; Question added Succesfully. Click <a href='../../round2questions.php' target='_blank'>Here</a> to view all Added Question for Round 2 !
       </div>";
             }
             else {
@@ -35,12 +35,16 @@ if (isset($_POST['addquest'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/profile.css" >
+        
     </head>
     <body>
         <form action="" enctype="multipart/form-data" method="POST">
             <div style="text-align: center">
                 QUESTION WIZARD - Create A question
             </div>
+            <?php if (isset($mssg)) {
+                echo $mssg;
+            } ?>
             <div class="carol-large">
                 <div >
                     <section id="access" style=" border:2px solid; padding:2px; display:block;">                        
@@ -55,49 +59,59 @@ if (isset($_POST['addquest'])) {
                 <div style="">
                     <textarea class="msg-large"  placeholder='Write Question here' name='body' id="textarea"></textarea><br>
                     
+                    <p style="font-size: 22px; text-transform: uppercase">copy image link Here</p>
+                        <textarea name="" id="ImgPasteUrl"  style="border:2px solid; border-radius: 5px; width: 45%; height:81px;margin-top: -10px" readonly="readonly"></textarea>
+
                     <b style="display: block">OPTIONS</b>
-                    (1)<input type="text" class="myoption" name="OptionA"><br>
-                    (2)<input type="text" class="myoption" name="OptionB"><br>
-                    (3)<input type="text" class="myoption" name="OptionC"><br>
-                    (4)<input type="text" class="myoption" name="OptionD"><br>
-                    (CORRECT ANSWER)<input type="text" class="myoption" name="CorrectOption"><b style="color:red">* *</b>
+                    (1)<input type="text" class="myoption" name="OptionA"><button type="button" id="useImg">USE IMAGE?</button><br>
+                    (2)<input type="text" class="myoption" name="OptionB"><button type="button" id="useImga">USE IMAGE?</button><br>
+                    (3)<input type="text" class="myoption" name="OptionC"><button type="button" id="useImgb">USE IMAGE?</button><br>
+                    (4)<input type="text" class="myoption" name="OptionD"><button type="button" id="useImgc">USE IMAGE?</button><br>
+                    (CORRECT ANSWER)<input type="text" class="myoption" placeholder="Write The Answer in full" name="CorrectOption"><b style="color:red">* *</b>
+                    
                  <input type='submit' name='addquest' class='send-large' value='CREATE'>
                 </div>
-                <div style="float: right">
-                    <p>PREVIEW</p>
+                <div style="">
+                    <p>PREVIEW ADDED QUESTIONS <a href="../../round2questions.php" target="_blank">HERE</a></p> 
                 </div>
             </div>
-            <script type="text/javascript" src="../assets/js/textfield.js"></script>
+           
         </form>
-        
-        <section class='container'>
-            <div class="col-lg-11">
-              <?php
-                require '../../sql/config.php';
-                $query = "SELECT * FROM `questionround2` \n" . " ORDER BY `id` DESC";
+        <div style="text-align:center; padding:30px">
+        <b style="font-size:24px;">ALL UPLOADS</b> <br>
+        </div>
+        <section>
+            <?php
+                require "../../sql/config.php";
+                $query = "SELECT * FROM `uploads`  \n" . " ORDER BY `id` DESC";
                 $stmt = $DBcon->prepare( $query );
-                $disp = "";
-                if($stmt->execute()){
-                    while($row=$stmt->fetch(PDO::FETCH_BOTH)){
-                        $disp .= "<div class='container-mains'>";
-                        $disp .= "<p>Question id is $row[0]</p>";
-                        $disp .= "<p>Question: $row[2]</p>";
-                        $disp .= "<p>A: $row[3]</p>";
-                        $disp .= "<p>B: $row[4]</p>";
-                        $disp .= "<p>C: $row[5]</p>";
-                        $disp .= "<p>D: $row[6]</p>";
-                        $disp .= "</div>";
-
-                    }
+                $stmt->execute();
+                $display_res = "<div class=''>";
+                while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                    $display_res .= "
+                                        
+                                            <img src='uploads/$row[url]' style='width:130px; height:130px; margin:5px; display:inline; border:2px solid'>
+                                        
+                                    ";
                 }
-                echo $disp;
-                ?>  
-            </div>
+                $display_res .= "</div>";
+                echo $display_res;
+            ?>
         </section>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    </div>
         
-        <script src="" async defer></script>
+
+        <script src="../assets/js/jquery.3.2.1.min.js"></script>
+        <script>
+            
+            $(document).ready(function(){
+                
+                $("#useImg, #useImga, #useImgb, #useImgc").click(function(){
+                    $("#imgins").click();
+                })
+            })
+        </script> 
+        <script type="text/javascript" src="../assets/js/textfield.js"></script>
+        
     </body>
 </html>

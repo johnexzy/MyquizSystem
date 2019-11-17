@@ -36,7 +36,7 @@ if (isset($_POST['btn-login'])) {
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name='veiwport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name="viewport" content="width=device-width"/>
   <link rel="stylesheet" type="text/css" href="Admin/assets/css/style.css">
   <title>ADMIN&mdash;LOGIN</title>
   <style type="text/css">
@@ -47,6 +47,7 @@ if (isset($_POST['btn-login'])) {
             background-position: 50%;
             background-size: 100% 100%;
             background-origin: content-box;
+            padding: 0px;
             
         }
         .input{

@@ -8,6 +8,7 @@ require '../sql/config.php';
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width"/>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <title>ADMIN&mdash;LOGIN</title>
   <style type="text/css">

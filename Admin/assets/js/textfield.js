@@ -2,7 +2,8 @@ const isEnter = () => {
     var w = document.querySelector.bind(document)
     var textarea = w("#textarea"),
         li = w("#underline"),
-        b = w("#bold");
+        b = w("#bold"),
+        PasteUrl = w("#ImgPasteUrl");
     //adddlink = w("#addlink");
     var i = w("#italics"),
 
@@ -39,9 +40,11 @@ const isEnter = () => {
         format(textarea, "<i>", "</i>")
     })
     im.addEventListener("click", function() {
-        var imgURL = prompt("Paste the correct image url...")
+        var imgURL = prompt("Paste the correct URL of the Image here.\n To Copy the Link of the Image On Desktop, Right-click on the Image")
         if (imgURL) {
-            imgInsert(textarea, "<img src='" + imgURL + "' style='width:300px;height:200px;display:block;' alt='image'>")
+            $trail = imgURL.lastIndexOf("/") + 1;
+            imgName = imgURL.slice($trail)
+            imgInsert(PasteUrl, '<img src="Admin/round2/uploads/' + imgName + '" style="width:200px;height:200px;display:block;" alt="image">')
         }
 
     })
@@ -68,7 +71,7 @@ const isEnter = () => {
             to = field.selectionEnd;
         field.value = field.value.slice(0, from) + open + field.value.slice(to);
         textarea.addEventListener('focus', check)
-        $("#textarea").focus()
+        $("#PasteUrl").focus()
         field.selectionStart = field.selectionEnd = to + open.length;
     }
     textarea.addEventListener('input', check)
