@@ -10,7 +10,7 @@ require '../sql/config.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width"/>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <title>ADMIN&mdash;LOGIN</title>
+  <title>ADD CONTESTANTS</title>
   <style type="text/css">
     body{
             background: url('assets/img/full-screen-image-3.jpg');

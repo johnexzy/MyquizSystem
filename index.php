@@ -38,7 +38,7 @@ if (isset($_POST['btn-login'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width"/>
   <link rel="stylesheet" type="text/css" href="Admin/assets/css/style.css">
-  <title>ADMIN&mdash;LOGIN</title>
+  <title>Contestant's&mdash;LOGIN</title>
   <style type="text/css">
     body{
             background: url('Admin/assets/img/full-screen-image-3.jpg');

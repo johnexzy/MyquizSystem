@@ -19,19 +19,31 @@ and open the template in the editor.
             .login-btn-small-fade:focus{
                 border: none
             }
+            input{
+            margin:3px;
+            width:80px;
+            height: 80px;
+            border-radius:50px;
+            background: #9c0c0c;
+            color: #fff;
+            font-weight: bold;
+            font-family: sans serif
+        }
         </style>
         
     </head>
     <body>
         <div>
-        <span style="width:10px; height:10px; border-radius:10px; background:green; float:left; margin-top:5px"></span><b>Contestant <?php echo $conRow[2]."<br> Name: ".$conRow[1] ?></b><span></span>
+        <span style="width:10px; height:10px; border-radius:10px; background:green; float:left; margin-top:5px"></span><br><b>Contestant <?php echo $conRow[2]."<br> Name: ".$conRow[1] ?></b><span></span>
         </div>
-        <div style="float:right">
-        <a href="logout.php">LogOut</a>
+        <hr>
+        <div style="text-decoration:none">
+            <a href="logout.php" style="text-decoration:none"><input type="button" value="LOG-OUT"></a>
         </div>
+        <hr>
         <div style='text-align:center'>
-            <button class='login-btn-small-fade' style='width:300px;; height:40px' name="Check" onclick="checkPerm()">
-            START ROUND 2
+            <button class='login-btn-small-fade' style='width:300px;; height:40px' name="Check" onclick="checkPerm('?table=_checkmode2', 'Admin/_checkPerm.php')">
+            START
             </button>
         </div>
         <script src="Admin/assets/js/ui.js"></script>

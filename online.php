@@ -32,7 +32,12 @@ if ($empty->execute()) {
                         <button id='submit' type='submit' name='submitAnswer' >SUBMIT</button>
                     </div>
                   ";
-        $disp .= "</form>";
+        $getTime = $DBcon->prepare("SELECT * FROM `controls` WHERE `controls`.`id` = 1");
+        $getTime->execute();
+        $time = $getTime->fetch(PDO::FETCH_BOTH);
+        
+        $disp .= "  <input type='hidden' id='minutes' value='$time[1]'><input type='hidden' id='seconds' value='$time[2]'>
+                    </form>";
     }
 }
 

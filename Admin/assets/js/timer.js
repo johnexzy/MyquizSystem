@@ -1,3 +1,5 @@
+var id = document.getElementById.bind(document);
+var minutes = Number((id("minutes").value * 60) + (id("seconds").value) * 1)
 var running = false
 var endTime = null
 var timerID = null
@@ -6,7 +8,7 @@ const startTimer = () => {
     running = true
     now = new Date();
     now = now.getTime()
-    endTime = now + (1000 * 20 * 1)
+    endTime = now + (1000 * minutes * 1)
     showCountDown()
 }
 const showCountDown = () => {

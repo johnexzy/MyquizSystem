@@ -1,4 +1,4 @@
-const checkPerm = (table, path) => {
+const checkRes = () => {
     //var tag = id('tag').value
     var updateRequest
     try {
@@ -17,13 +17,15 @@ const checkPerm = (table, path) => {
     }
     updateRequest.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText == 0) {
-                document.write("Please Wait for Admins Approval")
-            } else window.location = 'online.php';
+            document.getElementById("preview").innerHTML = this.responseText
+            setTimeout(function() {
+                checkRes()
+            }, 2000)
         }
     }
-    var updateString = table;
+
     //send query to _checkPermission.php
-    updateRequest.open("GET", path + updateString, true)
+    updateRequest.open("GET", "_checkresult.php", true)
     updateRequest.send(null)
 }
+checkRes()
