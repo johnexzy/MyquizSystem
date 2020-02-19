@@ -11,5 +11,8 @@
             $msg = "server error. Contact Admin";
         }
         echo $msg;
-    }  
+    }
+    if(strrchr("VID-20190723-WA0027.mp4", ".") == ".mp4" ) {
+        echo(strrchr("VID-20190723-WA0027.mp4", "."));
+    }
 ?>

@@ -25,7 +25,7 @@ const checkRes = () => {
     }
 
     //send query to _checkPermission.php
-    updateRequest.open("GET", "_checkresult.php", true)
+    updateRequest.open("GET", "_checkresult.pdo.php", true)
     updateRequest.send(null)
 }
 checkRes()

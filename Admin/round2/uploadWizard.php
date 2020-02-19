@@ -3,7 +3,7 @@ require_once "../../sql/dbconnect.php";
 if (isset($_POST['Upload'])) {    
     extract($_POST);
     //make sure file type is image
-    $extensions = array("jpeg", "jpg", "png", "gif");
+    $extensions = array("jpeg", "jpg", "png", "gif", "mp4", "mpeg4","mkv");
     foreach ($_FILES['uploaditem']['tmp_name'] as $key => $tmp_name) {
         $file_name = $_FILES['uploaditem']['name'][$key];
         $file_tmp =$_FILES['uploaditem']['tmp_name'][$key];
@@ -73,11 +73,17 @@ if (isset($_POST['Upload'])) {
                 $stmt->execute();
                 $display_res = "<div class=''>";
                 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-                    $display_res .= "
+                    if (strrchr($row["url"], ".") == ".mp4" || strrchr($row["url"], ".") == ".mkv") {
+                        $display_res .= "
+                        <video src='uploads/$row[url]' style='width:130px; height:130px; margin:5px; display:inline; border:2px solid' controls></video>              
+                        ";                       
+                    }else{
+                        $display_res .= "
                                         
                                             <img src='uploads/$row[url]' style='width:130px; height:130px; margin:5px; display:inline; border:2px solid'>
                                         
                                     ";
+                    }
                 }
                 $display_res .= "</div>";
                 echo $display_res;
