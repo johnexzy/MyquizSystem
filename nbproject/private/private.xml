@@ -4,14 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/MyQuiz/Admin/contestant.php</file>
-            <file>file:/C:/xampp/htdocs/MyQuiz/Admin/setup.php</file>
+            <file>file:/C:/xampp/htdocs/MyQuiz/Admin/setup.html</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/index.php</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/sql/env.php</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/sql/configurations.php</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/Admin/addcontest.php</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/Admin/index.php</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/sql/config.php</file>
-            <file>file:/C:/xampp/htdocs/MyQuiz/Admin/manageQuestion.php</file>
+            <file>file:/C:/xampp/htdocs/MyQuiz/Admin/manageQuestion.html</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/Admin/manageQuiz.php</file>
             <file>file:/C:/xampp/htdocs/MyQuiz/Admin/assets/js/addUser.js</file>
         </group>

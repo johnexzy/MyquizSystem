@@ -43,7 +43,8 @@
                 $insertInfo->bindParam(':grade', $grade);
                 $insertInfo->execute();
             }
-            echo " YOUR SCORE IS ".$numOK."/".$nums;
+            echo " YOUR SCORE IS ".$numOK."/".$nums."\n";
+            echo "<a href='../checkresult.html'>view result here</a>";
             exit;
                 
            
