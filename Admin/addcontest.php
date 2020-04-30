@@ -6,6 +6,7 @@
             $constNumber = $_GET['Number'];
             $tableName = $constName.$constNumber;
             // $tag = $_GET['tag'];
+            
             $insert = $DBcon->prepare(
                 "INSERT INTO contestants (constName, constNumber) values(:constName, :constNumber)"
             );

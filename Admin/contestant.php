@@ -1,5 +1,5 @@
 
-<?php     
+<?php
 
 require '../sql/config.php';
 ?>
@@ -43,11 +43,11 @@ require '../sql/config.php';
     <form name='myform' action="" method="GET" >
         <fieldset class="myfield" >
             <legend><img src="assets/img/myimage.png" class="myfield-legend"></legend>
-  
+
           <center>
           <div style="text-align:center">
               <u>REGISTERED CONTESTANTS</u>
-              
+
               <?php
                 $querycomment = "SELECT * FROM contestants";
                 $st = $DBcon->prepare($querycomment);
@@ -55,24 +55,25 @@ require '../sql/config.php';
                 $showupdate = "";
                 $showupdate .= "<div style='text-align:left'><ul id='registeredUsers'>";
                 $num = 0;
-                while($corow=$st->fetch(PDO::FETCH_ASSOC)){
-                  $num += 1;
-                    $showupdate .="<li style='list-style-type:none'>
-                    ".$num.". <b>CONTESTANT NO: $corow[constNumber] | Name: $corow[constName] </b>
-                                    </li>";
+                while ($corow = $st->fetch(PDO::FETCH_ASSOC)) {
+                    $num += 1;
+                    $showupdate .= "<li style='list-style-type:none'>
+                                    " . $num . ". <b>CONTESTANT NO: $corow[constNumber] | Name: $corow[constName] </b>
+                                                    </li>";
                 }
                 if ($num == 0) {
-                  $showupdate .= "<b>No registered Contestants Yet. Please Add</b>";
+                    $showupdate .= "<b>No registered Contestants Yet. Please Add</b>";
                 }
                 $showupdate .= "	</ul></div>";
                 echo $showupdate;
-            ?>
-          </div>
-            <font style="text-align: center; text-transform: uppercase" ><u>ADD CONTESTANTS</u></font>
-              <?php 
+                ?>
+                          </div>
+                            <font style="text-align: center; text-transform: uppercase" ><u>ADD CONTESTANTS</u></font>
+              <?php
                 if (isset($msg)) {
-                      echo $msg;
-                } 
+                    echo $msg;
+                }
+                
               ?>
             <div class="dropper-form" style="margin-top: 50px">
               <!-- <label for="name">USERNAME:  </label> -->
