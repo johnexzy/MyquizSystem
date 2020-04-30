@@ -1,6 +1,6 @@
 <?php
     $sever = "localhost";
-    $database = "myquizdb";
-    $username = "root";
-    $dbpass = ""
+    $database = "unnkone1_unnkonet";
+    $username = "unnkone1_admin";
+    $dbpass = "John549540"
 ?>
